@@ -1,7 +1,6 @@
 :local mVal	"";
 
-
-:if (1 = 1) do={
+:if (1 = 2) do={
 :set mVal [/system/script/environment/remove [find]];
 }
 
@@ -23,8 +22,3 @@
 :put ([($connObj->"getPepper")]);
 :put ("Pepper end");
 		
-
-
-
-
-
