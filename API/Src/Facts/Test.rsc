@@ -15,10 +15,17 @@
 
 :global DcnCcm;
 
+:local msgObj [($DcnCcm->"get") "getApis()->newRequest()"];
+:set mVal ([($msgObj->"setL1") "CCM"]);
+:set mVal ([($msgObj->"setL2") "Instances"]);
+:set mVal ([($msgObj->"setL3") "Get"]);
+:set mVal ([($msgObj->"setL4") "Exists"]);
+:set mVal ([($msgObj->"setL5") "ByIdentity"]);
 
-:local connObj [($DcnCcm->"get") "getApis()->getApi()"];
-	
+:set mVal ([($msgObj->"addTxData") "identity" "ap-99851.lionstripe.com"]);
+
+
 :put ("Pepper start");
-:put ([($connObj->"getPepper")]);
+:put ([($msgObj->"getResponse")]);
 :put ("Pepper end");
 		
