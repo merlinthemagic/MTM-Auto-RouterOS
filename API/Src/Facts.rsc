@@ -13,7 +13,7 @@
 	#static "objects"
 	:global MtmAutoEnvs;
 	:set MtmAutoEnvs [:toarray ""];
-	:set ($MtmAutoEnvs->"mtm.debug.enabled") true; ##pre loading env file default value, if MTM fails to load at all set to true
+	:set ($MtmAutoEnvs->"mtm.auto.debug.enabled") false; ##pre loading env file default value. needed for boot strapping, if MTM fails to load at all set to true
 	
 	:global MtmAutoAvps;
 	:set MtmAutoAvps [:toarray ""];
@@ -27,29 +27,11 @@
 		:put ($0."\n");
 		:return true;
 	}
-	
-	
-	:set ($s->"setDebug") do={
-		:local cPath "MTM/Auto/Facts.rsc/setDebug";
-		:if ([:typeof $0] != "bool") do={
-			:error ($cPath.": Parameter must be true or false");
-		}
-		:global MtmAuto;
-		:local mVal [($MtmAuto->"setEnv") "mtm.debug.enabled" ($0)];
-		:if ($0 = true) do={
-			:set mVal [($MtmAuto->"echo") ("Debug set ON")];
-		} else={
-			:set mVal [($MtmAuto->"echo") ("Debug set OFF")];
-		}
-		:return true;
-	}
 	:set ($s->"getDebug") do={
 		:local cPath "MTM/Auto/Facts.rsc/getDebug";
 		:global MtmAuto;
-		:return [($MtmAuto->"getEnv") "mtm.debug.enabled"];
+		:return [($MtmAuto->"getEnv") "mtm.auto.debug.enabled"];
 	}
-	
-	
 	:set ($s->"setEnv") do={
 		:local cPath "MTM/Auto/Facts.rsc/setEnv";
 		:if ([:len $0] = 0 || [:typeof $0] != "str") do={
