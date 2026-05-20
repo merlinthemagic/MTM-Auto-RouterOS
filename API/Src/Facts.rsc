@@ -3,7 +3,6 @@
 
 :global MtmAutoLoaded;
 :if ([:typeof $MtmAutoLoaded] = "nothing") do={
-	##Load the Enable.rsc file before using Facts
 	:error ($cPath.": Please load Enable.rsc before using the factory");
 }
 
@@ -13,7 +12,7 @@
 	#static "objects"
 	:global MtmAutoEnvs;
 	:set MtmAutoEnvs [:toarray ""];
-	:set ($MtmAutoEnvs->"mtm.auto.debug.enabled") false; ##pre loading env file default value. needed for boot strapping, if MTM fails to load at all set to true
+	:set ($MtmAutoEnvs->"mtm.auto.debug.enabled") true; ##pre loading env file default value. needed for boot strapping, if MTM fails to load at all set to true
 	
 	:global MtmAutoAvps;
 	:set MtmAutoAvps [:toarray ""];
