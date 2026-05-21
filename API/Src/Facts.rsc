@@ -12,7 +12,7 @@
 	#static "objects"
 	:global MtmAutoEnvs;
 	:set MtmAutoEnvs [:toarray ""];
-	:set ($MtmAutoEnvs->"mtm.auto.debug.enabled") true; ##pre loading env file default value. needed for boot strapping, if MTM fails to load at all set to true
+	:set ($MtmAutoEnvs->"mtm.auto.debug.enabled") false; ##pre loading env file default value. needed for boot strapping, if MTM fails to load at all set to true
 	
 	:global MtmAutoAvps;
 	:set MtmAutoAvps [:toarray ""];
@@ -23,7 +23,7 @@
 	:local s [:toarray ""];
 	
 	:set ($s->"echo") do={
-		:put ($0."\n");
+		:put ($0);
 		:return true;
 	}
 	:set ($s->"getDebug") do={
